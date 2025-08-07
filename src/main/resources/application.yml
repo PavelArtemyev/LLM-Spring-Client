@@ -1,6 +1,8 @@
 spring:
   application:
     name: LLM-Spring-Client
+  main:
+    allow-circular-references: true
   ai:
     ollama:
       base-url: http://localhost:11431
@@ -10,3 +12,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/ragdb
     username: ${USERNAME:postgres}
     password: ${PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update

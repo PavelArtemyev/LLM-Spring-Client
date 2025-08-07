@@ -4,28 +4,28 @@ document.addEventListener("DOMContentLoaded", function() {
     const messagesContainer = document.getElementById("messages");
 
     sendButton.addEventListener("click", function() {
-        const prompt = chatInput.value;
-        if (!prompt) return;
+        const message = chatInput.value;
+        if (!message) return;
         chatInput.value = "";
 
         // Добавляем сообщение пользователя в чат
         const userDiv = document.createElement("div");
         userDiv.className = "message user";
-        userDiv.innerHTML = `<img src="/images/user.png" alt="User"><div class="bubble">${prompt}</div>`;
+        userDiv.innerHTML = `<img src="/images/user.png" alt="User"><div class="bubble">${message}</div>`;
         messagesContainer.appendChild(userDiv);
 
         const pathParts = window.location.pathname.split("/");
         const chatId = pathParts[pathParts.length - 1];
-        const url = `/chat-stream/${chatId}?userPrompt=${encodeURIComponent(prompt)}`;
+        const url = `/chat-stream/${chatId}?message=${encodeURIComponent(message)}`;
 
         const eventSource = new EventSource(url);
         let fullText = "";
 
         // Создаем блок для ответа AI
         const aiDiv = document.createElement("div");
-        aiDiv.className = "message mentor";
+        aiDiv.className = "message assistant";
         // Добавляем изображение ассистента
-        aiDiv.innerHTML = `<img src="/images/mentor.png" alt="Mentor">`;
+        aiDiv.innerHTML = `<img src="/images/assistant.png" alt="Assistant">`;
         // Создаем элемент для содержимого, куда будем вставлять ответ
         const aiBubble = document.createElement("div");
         aiBubble.className = "bubble";
