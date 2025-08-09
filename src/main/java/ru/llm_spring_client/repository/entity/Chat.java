@@ -25,9 +25,9 @@ public class Chat {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "chat_id")
-    private List<Message> messages;
+    private List<ChatMessage> messages;
 
-    public void addMessage(Message message) {
+    public void addChatMessage(ChatMessage message) {
         this.messages.add(message);
     }
 }
