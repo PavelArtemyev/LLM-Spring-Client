@@ -8,7 +8,6 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import ru.llm_spring_client.repository.ChatRepository;
-import ru.llm_spring_client.service.PostgresChatMemory;
 
 @Component
 @RequiredArgsConstructor

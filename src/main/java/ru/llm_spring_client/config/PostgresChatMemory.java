@@ -1,4 +1,4 @@
-package ru.llm_spring_client.service;
+package ru.llm_spring_client.config;
 
 import lombok.Builder;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -15,7 +15,7 @@ public class PostgresChatMemory implements ChatMemory {
 
     private final ChatRepository chatMemoryRepository;
 
-    private int maxMessages;
+    private final int maxMessages;
 
     @Override
     public void add(String conversationId, List<Message> messages) {

@@ -63,20 +63,18 @@ public class ChatService {
 
     public SseEmitter proceedInteractionWithStreaming(Long chatId, String message) {
         SseEmitter sseEmitter = new SseEmitter(0L);
-        StringBuffer answerMessage = new StringBuffer();
         chatClient.prompt()
                 .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, chatId))
                 .user(message).stream()
                 .chatResponse()
-                .subscribe(response -> processToken(response, sseEmitter, answerMessage),
+                .subscribe(response -> processToken(response, sseEmitter),
                         sseEmitter::completeWithError);
         return sseEmitter;
     }
 
     @SneakyThrows
-    private void processToken(ChatResponse response, SseEmitter sseEmitter, StringBuffer stringBuffer) {
+    private void processToken(ChatResponse response, SseEmitter sseEmitter) {
         AssistantMessage token = response.getResult().getOutput();
         sseEmitter.send(token);
-        stringBuffer.append(token.getText());
     }
 }
