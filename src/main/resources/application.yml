@@ -4,6 +4,9 @@ spring:
   main:
     allow-circular-references: true
   ai:
+#    vectorstore:
+#      pgvector:
+#        table-name:
     ollama:
       base-url: http://localhost:11431
       chat:
