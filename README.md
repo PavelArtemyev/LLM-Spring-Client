@@ -1,4 +1,4 @@
-# Описание проекта: Spring AI ChatBot
+# Описание проекта: LLM-Spring-Client
 
 ## 1. Краткое описание (Executive Summary):
 
